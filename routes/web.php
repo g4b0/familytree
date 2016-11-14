@@ -20,3 +20,7 @@ Route::get('/', function () {
 Route::get('/test', function () {
     dd(DB::connection()->getDatabaseName());
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
