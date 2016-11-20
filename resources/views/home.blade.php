@@ -19,6 +19,9 @@
                     @if (isset($Mother))
                         Mother: {{ $Mother->firstname }} {{ $Mother->surname }}<br>
                     @endif
+                    @foreach ($Path as $p) 
+                    Path: {{ $p }}<br>
+                    @endforeach
                 </div>
             </div>
         </div>

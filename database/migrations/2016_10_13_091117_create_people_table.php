@@ -23,6 +23,7 @@ class CreatePeopleTable extends Migration {
             $table->enum('gender', ['Male', 'Female', 'Other'])->nullable();
             $table->date('date_of_birth')->nullable();
             $table->boolean('living')->nullable();
+            $table->date('date_of_death')->nullable();
             // Contact
             $table->string('email')->nullable()->unique();
             $table->string('phone')->nullable();
