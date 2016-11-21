@@ -216,5 +216,22 @@ class PeopleTableSeeder extends Seeder
         DB::table('people')
             ->whereIn('id', [$andrea_lombardo_id, $elia_lombardo_id, $marta_lombardo_id])
             ->update(['father_id' => $giovanni_lombardo_id]);
+        
+        // Nonni materni gabo
+        $michele_id = DB::table('people')->insertGetId([
+            'firstname' => 'Adolfo',
+            'surname' => 'Danna',
+            'gender' => 'Male',
+        ]);
+        
+        $mely_id = DB::table('people')->insertGetId([
+            'firstname' => 'Emiliana',
+            'surname' => 'Tomatis',
+            'gender' => 'Female',
+        ]);
+        
+        DB::table('people')
+            ->whereIn('id', [$grazia_id])
+            ->update(['father_id' => $michele_id, 'mother_id' => $mely_id]);
     }
 }

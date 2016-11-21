@@ -45,8 +45,19 @@ class Node {
         return $this;
     }
     
-    public function getConnectedNodes() {
-        return $this->connected_nodes;
+    public function getConnectedNodes($dir = GraphDirections::BOTH) {
+        
+        if ($dir === GraphDirections::BOTH) {
+            return $this->connected_nodes;
+        }
+        
+        $ret = [];
+        foreach ($this->connected_nodes as $id => $cn) {
+            if ($cn['dir'] === $dir) {
+                $ret[$id] = $cn;
+            }
+        }
+        return $ret;
     }
     
     public function getDirTo(Node $node) {

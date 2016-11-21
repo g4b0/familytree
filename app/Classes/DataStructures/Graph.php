@@ -65,7 +65,11 @@ class Graph {
     public function getNode($id) {
         return isset($this->nodes[$id]) ? $this->nodes[$id] : null;
     }
-
+    
+    public function getNodes() {
+        return $this->nodes;
+    }
+    
     /**
      * Count the number of nodes
      * 

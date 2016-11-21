@@ -24,15 +24,15 @@ class HomeController extends Controller {
      */
     public function index() {
         $gabo = Person::where('identifier', '=', 'BRSGRL81C03D205D')->first();
-        $father = $gabo->getFather();
-        $mother = $gabo->getMother();
-        $grandfather = $father->getFather();
+        $nando = $gabo->getFather();
+        $grazia = $gabo->getMother();
+        $michele = $nando->getFather();
 
         $data = [
             'Gabo' => $gabo,
-            'Father' => $father,
-            'Mother' => $mother,
-            'Grandfather' => $grandfather,
+            'Father' => $nando,
+            'Mother' => $grazia,
+            'Grandfather' => $michele,
             'Path' => []
         ];
 
@@ -42,7 +42,11 @@ class HomeController extends Controller {
         //dd($gabo->getChildren());
         //dd($gabo->getGrandParents());
         //dd($gabo->getUncles());
+        //dd($gabo->getAncestors());
         //dd($gabo->getCousins());
+        //dd($gabo->getNephews());
+        //dd($michele->getGrandsons());
+        
         $graph = $gabo->getGraph();
         //dd($graph);
 
@@ -70,7 +74,12 @@ class HomeController extends Controller {
         $data['Path'][] = $this->getPathTxt($ricky, $lorenzo, $graph);
         $data['Path'][] = $this->getPathTxt($lily, $cuggi, $graph);
         //dd($data);
-
+        
+        //dd($gabo->getCousinDegree($cuggi));
+        //dd($lily->getCousinDegree($cuggi));
+        //dd($nando->getCousinDegree($cuggi));
+        //dd($nando->getCousinDegree($lorenzo));
+        //dd($ricky->getCousinDegree($lorenzo));
 
         return view('home', $data);
     }
