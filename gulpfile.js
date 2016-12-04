@@ -14,6 +14,12 @@ require('laravel-elixir-vue-2');
  */
 
 elixir(mix => {
-    mix.sass('app.scss')
-       .webpack('app.js');
+    mix.sass(['app.scss', 'familytree.scss'])
+            .webpack('app.js')
+            .combine([
+                'resources/assets/js/plugins/cytoscape.min.js',
+                'resources/assets/js/plugins/dagre.min.js',
+                'resources/assets/js/plugins/cytoscape-dagre.js'
+            ], 'public/js/plugins/graph.js')
+            .scripts('familytree.js');
 });

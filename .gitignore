@@ -7,3 +7,4 @@ Homestead.yaml
 .env
 nbproject
 _appunti
+/public/canvas.html
